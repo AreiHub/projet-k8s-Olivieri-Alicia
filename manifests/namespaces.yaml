@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev-al-25-03-2026
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: preprod-al-25-03-2026
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: prod-al-25-03-2026
