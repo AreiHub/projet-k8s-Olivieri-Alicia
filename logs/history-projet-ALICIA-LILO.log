@@ -1,0 +1,761 @@
+    1  docker --version
+    2  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    3  sudo install minikube-linux-amd64 /usr/local/bin/minikube
+    4  minikube version
+    5  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    6  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+    7  kubectl version --client
+    8  echo 'source <(minikube completion bash)' >> ~/.bashrc
+    9  source ~/.bashrc
+   10  minikube start --listen-address=0.0.0.0 --memory=max --cpus=max --kubernetes-version=v1.35.0
+   11  kubectl get nodes
+   12  k get pod -o wide
+   13  kubectl run nginx --image=nginx
+   14  kubectl get pod
+   15  kubectl describe pod nginx
+   16  k get pod -o wide
+   17  kubectl create deployment nginx-deployment --image=nginx
+   18  kubectl get deployment
+   19  k get all
+   20  nano ~/.bashrc
+   21  k get all
+   22  source ~/.bashrc
+   23  k get pod -o wide
+   24  minikube ssh
+   25  k get all
+   26  k expose deployment nginx-deployment --type=NodePort --port=80
+   27  k describe service nginx-deployment 
+   28  minikube ip
+   29  k describe service nginx-deployment 
+   30  k get service
+   31  minikube service nginx-deployment
+   32  k port-forward --address 0.0.0.0 services/caddy-deployment 9000:80
+   33  k port-forward --address 0.0.0.0 services/nginx-deployment 9000:80
+   34  minikube ip
+   35  k get svc
+   36  sudo apt install ca-certificates curl gnupg -y
+   37  sudo install -m 0755 -d /etc/apt/keyrings
+   38  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   39  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+   40    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   41  sudo apt update
+   42  sudo apt install docker-ce docker-ce-cli containerd.io -y
+   43  sudo systemctl enable docker
+   44  sudo systemctl start docker
+   45  sudo usermod -aG docker $USER
+   46  newgrp docker
+   47  k get svc
+   48  kubectl create deployment hello-minikube --image=kicbase/echo-server:1.0
+   49  kubectl expose deployment hello-minikube --type=NodePort --port=8080
+   50  kubectl get services hello-minikube
+   51  minikube service hello-minikube
+   52  kubectl port-forward service/hello-minikube 7080:8080
+   53  kubectl create deployment balanced --image=kicbase/echo-server:1.0
+   54  kubectl expose deployment balanced --type=LoadBalancer --port=8080
+   55  minikube tunnel
+   56  kubectl get services balanced
+   57  minikube addons enable ingress
+   58  kubectl apply -f https://storage.googleapis.com/minikube-site-examples/ingress-example.yaml
+   59  sudo apt update && sudo apt upgrade -y
+   60  sudo apt install ca-certificates curl gnupg -y
+   61  ip a
+   62  ls
+   63  kubectl rollout status deployment/nginx-deployment
+   64  kubectl get deployments
+   65  kubectl get rs
+   66  kubectl get pods
+   67  kubectl describe deployments
+   68  kubectl set image deployment/nginx-deployment nginx=nginx:1.161
+   69  kubectl rollout status deployment/nginx-deployment
+   70  kubectl rollout history deployment/nginx-deployment
+   71  kubectl rollout history deployment/nginx-deployment --revision=2
+   72  kubectl rollout undo deployment/nginx-deployment --to-revision=2
+   73  kubectl annotate deployment/nginx-deployment kubernetes.io/change-cause="Mise à jour vers nginx 1.16.1"
+   74  kubectl rollout undo deployment/nginx-deployment
+   75  kubectl rollout undo deployment/nginx-deployment --to-revision=2
+   76  kubectl get deployment nginx-deployment
+   77  kubectl describe deployment nginx-deployment
+   78  kubectl scale deployment/nginx-deployment --replicas=10
+   79  kubectl get deploy
+   80  kubectl set image deployment/nginx-deployment nginx=nginx:sometag
+   81  kubectl get rs
+   82  kubectl get deploy
+   83  kubectl get rs
+   84  kubectl get deploy
+   85  kubectl get rs
+   86  kubectl rollout pause deployment/nginx-deployment
+   87  kubectl set image deployment/nginx-deployment nginx=nginx:1.16.1
+   88  kubectl rollout history deployment/nginx-deployment
+   89  kubectl get rs
+   90  kubectl patch deployment/nginx-deployment -p '{"spec":{"progressDeadlineSeconds":600}}'
+   91  kubectl describe deployment nginx-deployment
+   92  kubectl rollout status deployment/nginx-deployment
+   93  clear
+   94  ls
+   95  chmod +x kubectl minikube-linux-amd64
+   96  sudo mv kubectl /usr/local/bin/kubectl
+   97  sudo mv minikube-linux-amd64 /usr/local/bin/minikube
+   98  minukube version
+   99  minikube version
+  100  kubectl version --client
+  101  minikube start --driver=docker
+  102  docker system prune -a --volumes
+  103  minikube delete
+  104  minikube start --driver=docker --memory=2048mb
+  105  minikube start --listen-address=0.0.0.0 --memory=max --cpus=max --kubernetes-version=v1.35.0
+  106  minikube addons enable registry
+  107  eval $(minikube docker-env)
+  108  mkdir TP_Kubernetes
+  109  cd TP_Kubernetes/
+  110  ls
+  111  git clone https://github.com/app-generator/ecommerce-flask-stripe app-flask
+  112  git clone https://github.com/app-generator/django-adminlte app-django-lte
+  113  git clone https://github.com/app-generator/django-star-admin app-django-star
+  114  eval $(minikube docker-env)
+  115  ls
+  116  cd app-flask/
+  117  touch .dockerignore
+  118  apt update & upgrade
+  119  sudo apt update & upgrade
+  120  alicia
+  121  apt update
+  122  su
+  123  apt update
+  124  sudo apt update && sudo pat upgrade
+  125  ls
+  126  ./minikube-linux-amd64 stop
+  127  alicia@alicia:~$ minikube start --listen-address=0.0.0.0 --memory=max --cpus=max --kubernetes-version=v1.35.0
+  128  minikube start --listen-address=0.0.0.0 --memory=max --cpus=max --kubernetes-version=v1.35.0
+  129  eval $(minikube docker-env)
+  130  kubectl apply -f mydeployment.yaml
+  131  ls
+  132  ls -l
+  133  kubectl apply -f https://k8s.io/examples/application/deployment.yaml
+  134  kubectl describe deployment nginx-deployment
+  135  kubectl get pods -l app=nginx
+  136  kubectl describe pod nginx-deployment-77bc6bd484-lx2wj 
+  137  kubectl apply -f https://k8s.io/examples/application/deployment-update.yaml
+  138  kubectl get pods -l app=nginx
+  139  kubectl apply -f https://k8s.io/examples/application/deployment-scale.yaml
+  140  kubectl get pods -l app=nginx
+  141  kubectl delete deployment nginx-deployment
+  142  kubectl apply -f https://k8s.io/examples/application/guestbook/redis-leader-deployment.yaml
+  143  kubectl get pods
+  144  kubectl logs -f deployment/redis-leader
+  145  kubectl describe pod redis-leader-6465bf85d4-jf9tf
+  146  kubectl logs -f deployment/redis-leader
+  147  kubectl apply -f https://k8s.io/examples/application/guestbook/redis-leader-service.yaml
+  148  kubectl get service
+  149  kubectl apply -f https://k8s.io/examples/application/guestbook/redis-follower-deployment.yaml
+  150  kubectl get pods
+  151  kubectl apply -f https://k8s.io/examples/application/guestbook/redis-follower-service.yaml
+  152  kubectl get service
+  153  kubectl apply -f https://k8s.io/examples/application/guestbook/frontend-deployment.yaml
+  154  kubectl get pods -l app=guestbook -l tier=frontend
+  155  kubectl apply -f https://k8s.io/examples/application/guestbook/frontend-service.yaml
+  156  kubectl get services
+  157  kubectl port-forward svc/frontend 8080:80
+  158  kubectl get pods
+  159  kubectl apply -f https://k8s.io/examples/application/guestbook/frontend-deployment.yaml
+  160  kubectl get pods -l app=guestbook -l tier=frontend -w
+  161  kubectl port-forward svc/frontend 8080:80
+  162  kubectl get service frontend
+  163  kubectl scale deployment frontend --replicas=5
+  164  kubectl get pods
+  165  kubectl scale deployment frontend --replicas=2
+  166  kubectl get pods
+  167  kubectl apply -f https://k8s.io/examples/controllers/nginx-deployment.yaml
+  168  kubectl get deployments
+  169  kubectl rollout status deployment/nginx-deployment
+  170  kubectl get deployments
+  171  ubectl set image deployment.v1.apps/nginx-deployment nginx=nginx:1.16.1
+  172  kubectl set image deployment.v1.apps/nginx-deployment nginx=nginx:1.16.1
+  173  kubectl edit deployment/nginx-deployment
+  174  ip 
+  175  ip a
+  176  apt upgrade
+  177  ip a
+  178  docker system prune -a --volumes -f
+  179  df -h
+  180  docker builder prune -f
+  181  cd ~/TP_Kubernetes/app-flask
+  182  docker build -t flask-app:v1 .
+  183  touch flask-k8s.yaml
+  184  ls
+  185  kubectl apply -f flask-k8s.yaml
+  186  kubectl get pods
+  187  eval $(minikube docker-env)
+  188  kubectl get pods
+  189  eval $(minikube docker-env)
+  190  kubectl get pods
+  191  docker images | grep flask
+  192  docker build -t flask-app:v1 .
+  193  docker images | grep flask
+  194  kubectl delete pod -l app=flask
+  195  kubectl get pods
+  196  cd ~/TP_Kubernetes/app-django-lte/
+  197  ls
+  198  touch Dockerfile
+  199  docker build -t django-lte:v1 .
+  200  touch django-lte-k8s.yaml
+  201  kubectl apply -f django-lte-k8s.yaml
+  202  cd ../
+  203  cd app-django-star/
+  204  ls
+  205  touch Dockerfile
+  206  docker build -t django-star:v1 .
+  207  touch django-star-k8s.yaml
+  208  kubectl apply -f django-star-k8s.yaml
+  209  df -h
+  210  docker image
+  211  docker images
+  212  docker ps
+  213  df -h
+  214  sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv 
+  215  df -h
+  216  hostnamectl 
+  217  cat /etc/issue
+  218  sudo fdisk -l
+  219  sudo resize2fs /dev/sda3
+  220  sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv 
+  221  sudo growpart /dev/sda3
+  222  sudo growpart /dev/sda 3
+  223  df -h
+  224  sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv
+  225  df -h
+  226  clear
+  227  sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv 
+  228  df -h
+  229  sudo growpart /dev/sda 3
+  230  sudo reboot 
+  231  ls
+  232  cd TP_Kubernetes/
+  233  ls
+  234  cd ../
+  235  ls
+  236  cd priv-django-soft-ui-dashboard-pro-master/
+  237  ls
+  238  touch .gitignore
+  239  touch .dockerignore
+  240  docker build -t django-soft-ui:v1 .
+  241  docker images
+  242  kubectl get svc -n app-ecommerce
+  243  docker imageskubectl get svc -n app-ecommerce
+  244  kubectl get svc -n app-ecommerce
+  245  minikube service ecommerce-service -n app-ecommerce
+  246  kubectl logs -f -l app=ecommerce -n app-ecommerce
+  247  kubectl apply -f k8s-deploy.yaml
+  248  kubectl logs -l app=ecommerce -n app-ecommerce --tail 20
+  249  kubectl get pods -n app-ecommerce
+  250  kubectl exec -it ecommerce-deployment-5854bf8c7c-b866m -n app-ecommerce -- python manage.py migrate
+  251  kubectl exec -it ecommerce-deployment-5854bf8c7c-b866m -n app-ecommerce -- python manage.py collectstatic --noinput
+  252  LS
+  253  ls
+  254  minikube tunnel 
+  255  eval $(minikube docker-env)
+  256  ls
+  257  cd TP_Kubernetes/
+  258  cd app-django-star/
+  259  ls
+  260  eval $(minikube docker-env)
+  261  kubectl apply -f django-lte-k8s.yaml
+  262  ls
+  263  kubectl apply -f django-star-k8s.yaml
+  264  docker build -t django-lte:v1 .
+  265  cd ../
+  266  cd app-django-lte/
+  267  kubectl apply -f django-lte-k8s.yaml
+  268  minikube start --driver=docker --memory=2048mb
+  269  eval $(minikube docker-env)
+  270  docker images | grep flask
+  271  docker images | grep django
+  272  # Pour Flask (App 1)
+  273  cd ~/TP_Kubernetes/app-flask
+  274  kubectl apply -f flask-k8s.yaml
+  275  # Pour Django LTE (App 2)
+  276  cd ~/TP_Kubernetes/app-django-lte
+  277  kubectl apply -f django-lte-k8s.yaml
+  278  # Pour Django Star (App 3)
+  279  cd ~/TP_Kubernetes/app-django-star
+  280  kubectl apply -f django-star-k8s.yaml
+  281  kubectl get pods
+  282  kubectl get svc
+  283  minikube ip
+  284  curl -I http://192.168.49.2:30001
+  285  kubectl logs -f $(kubectl get pods -l app=django-lte -o name)
+  286  curl -L http://localhost:30001
+  287  curl -I http://192.168.49.2:30001
+  288  k get svc
+  289  minikube service flask-service
+  290  docker images
+  291  docker rmi django-lte:v1 
+  292  docker ps -a
+  293  kubectl delete deployment django-star-deployment
+  294  kubectl delete deployment django-lte-deployment
+  295  kubectl delete deployment flask-deployment
+  296  kubectl get deployments
+  297  docker container prune -f
+  298  docker rmi django-lte:v1 django-star:v1 flask-app:v1
+  299  docker ps -a
+  300  docker images
+  301  docker ps -a
+  302  docker images
+  303  docker rmi flask-app:v1
+  304  docker images
+  305  ls
+  306  cd ../
+  307  cd TP2_Kuber
+  308  ls
+  309  cd ../
+  310  ls*
+  311  ls
+  312  cd TP2_Kuber/
+  313  ls
+  314  kubectl create namespace app-ecommerce
+  315  kubectl create namespace app-pro
+  316  kubectl create namespace app-softui
+  317  # On se connecte au Docker de Minikube pour builder les images dedans
+  318  eval $(minikube docker-env)
+  319  ls
+  320  cd priv-rocket-ecommerce-main/
+  321  touch .dockerignore
+  322  docker build -t rocket-ecommerce:v1 .
+  323  docker images
+  324  cd ../
+  325  ls
+  326  cd priv-rocket-django-pro-main/
+  327  ls
+  328  docker build -t rocket-django-pro:v1 .
+  329  touch .dockerignore
+  330  docker images
+  331  ls
+  332  cd ../
+  333  cd priv-django-soft-ui-dashboard-pro-master/
+  334  docker build -t django-soft-ui:v1 .
+  335  docker images
+  336  cd ../
+  337  ls
+  338  touch k8s-deploy.yaml
+  339  kubectl apply -f k8s-deploy.yaml
+  340  kubectl get svc -A
+  341  kubectl get pods -A
+  342  kubectl get svc -n app-ecommerce 
+  343  minikube service pro-service -n app-pro --url
+  344  kubectl port-forward svc/softui-service 8080:80 -n app-softui
+  345  kubectl get pods -A | grep -E "ecommerce|pro|softui"
+  346  k get svc
+  347  k get ns
+  348  kubectl get pods -A -o wide | grep -E "ecommerce|pro|softui"
+  349  k get svc
+  350  df -h
+  351  sudo apt update && apt upgrade 
+  352  sudo apt upgrade 
+  353  minikube start --listen-address=0.0.0.0 --memory=max --cpus=max --kubernetes-version=v1.35.0
+  354  ls
+  355  kubectl delete all --all
+  356  ls
+  357  rm TP2_Kuber/
+  358  ls
+  359  mkdir TP_Secret
+  360  cd TP
+  361  ls
+  362  cd TP_Secret/
+  363  ls
+  364  clear
+  365  kubectl create namespace preprod
+  366  kubectl create namespace dev
+  367  mkdir stripe-app python-app k8s
+  368  cd stripe-app/
+  369  ls
+  370  cat <<EOF > server.js
+  371  const express = require('express');
+  372  const app = express();
+  373  const port = 4242;
+  374  app.get('/', (req, res) => {
+  375    res.send('POC Stripe Opérationnel. Key: ' + process.env.STRIPE_API_KEY);
+  376  });
+  377  app.listen(port, () => console.log('Serveur Stripe sur port 4242'));
+  378  EOF
+  379  # Créer le package.json
+  380  cat <<EOF > package.json
+  381  {
+  382    "name": "stripe-poc",
+  383    "version": "1.0.0",
+  384    "dependencies": { "express": "^4.18.2" }
+  385  }
+  386  EOF
+  387  # Créer le Dockerfile OPTIMISÉ (Multi-stage)
+  388  cat <<EOF > Dockerfile
+  389  FROM node:18-alpine AS builder
+  390  WORKDIR /app
+  391  COPY package*.json ./
+  392  RUN npm install
+  393  COPY . .
+  394  FROM node:18-alpine
+  395  WORKDIR /app
+  396  COPY --from=builder /app .
+  397  EXPOSE 4242
+  398  CMD ["node", "server.js"]
+  399  EOF
+  400  cd ..
+  401  cd python-app
+  402  # Créer l'app Flask
+  403  cat <<EOF > app.py
+  404  from flask import Flask
+  405  import os
+  406  app = Flask(__name__)
+  407  @app.route('/')
+  408  def hello():
+  409      env = os.getenv('APP_ENV', 'unknown')
+  410      return f"App Python en mode: {env}"
+  411  if __name__ == "__main__":
+  412      app.run(host='0.0.0.0', port=5000)
+  413  EOF
+  414  # Créer requirements
+  415  echo "flask" > requirements.txt
+  416  # Créer le Dockerfile OPTIMISÉ
+  417  cat <<EOF > Dockerfile
+  418  FROM python:3.11-slim
+  419  WORKDIR /app
+  420  COPY requirements.txt .
+  421  RUN pip install --no-cache-dir -r requirements.txt
+  422  COPY . .
+  423  EXPOSE 5000
+  424  CMD ["python", "app.py"]
+  425  EOF
+  426  cd ..
+  427  kubectl port-forward svc/stripe-service 4242:4242 -n preprod
+  428  clear
+  429  kubectl get pods -n preprod
+  430  kubectl get pods -n dev
+  431  kubectl exec -it stripe-poc-78b87cc4-hrfn6 -n preprod -- printenv | grep STRIPE
+  432  ls
+  433  cd TP_Secret/
+  434  ls
+  435  cd k8s/
+  436  kubectl apply -f stripe-deploy.yaml
+  437  kubectl get pods -n preprod
+  438  kubectl exec -it $(kubectl get pod -l app=stripe -n preprod -o jsonpath='{.items[0].metadata.name}') -n preprod -- printenv | grep STRIPE
+  439  eval $(minikube docker-env)
+  440  docker build -t stripe-poc:1.0 ./stripe-app
+  441  ls
+  442  cd TP_Secret/
+  443  ls
+  444  docker build -t stripe-poc:1.0 ./stripe-app
+  445  docker build -t python-app:1.0 ./python-app
+  446  cd k8s
+  447  # Création des Secrets et ConfigMaps via commande directe (plus rapide)
+  448  kubectl create secret generic stripe-secret --from-literal=STRIPE_KEY=sk_test_SECRET_123 -n preprod
+  449  kubectl create configmap stripe-config --from-literal=SUCCESS_URL=https://checkout.stripe.com/success -n preprod
+  450  kubectl create secret generic python-secret --from-literal=DB_PASS=admin123 -n dev
+  451  kubectl create configmap python-config --from-literal=APP_ENV=development -n dev
+  452  ls
+  453  cat <<EOF > stripe-deploy.yaml
+  454  apiVersion: apps/v1
+  455  kind: Deployment
+  456  metadata:
+  457    name: stripe-poc
+  458    namespace: preprod
+  459  spec:
+  460    replicas: 1
+  461    selector:
+  462      matchLabels:
+  463        app: stripe
+  464    template:
+  465      metadata:
+  466        labels:
+  467          app: stripe
+  468      spec:
+  469        containers:
+  470        - name: stripe
+  471          image: stripe-poc:1.0
+  472          imagePullPolicy: Never
+  473          env:
+  474          - name: STRIPE_API_KEY
+  475            valueFrom:
+  476              secretKeyRef:
+  477                name: stripe-secret
+  478                key: STRIPE_KEY
+  479  ---
+  480  apiVersion: v1
+  481  kind: Service
+  482  metadata:
+  483    name: stripe-service
+  484    namespace: preprod
+  485  spec:
+  486    selector:
+  487      app: stripe
+  488    ports:
+  489    - port: 4242
+  490      targetPort: 4242
+  491  EOF
+  492  # Lancer le déploiement
+  493  kubectl apply -f stripe-deploy.yaml
+  494  # Attendre que le pod soit "Running"
+  495  kubectl get pods -n preprod
+  496  # VÉRIFICATION de l'injection (Etape 5 du TP)
+  497  kubectl exec -it $(kubectl get pod -l app=stripe -n preprod -o jsonpath='{.items[0].metadata.name}') -n preprod -- printenv | grep STRIPEaaaaaaaaaaa
+  498  kubectl exec -it $(kubectl get pod -l app=stripe -n preprod -o jsonpath='{.items[0].metadata.name}') -n preprod -- printenv | grep STRIPEclear
+  499  clear
+  500  cd TP_Secret/
+  501  bore local 4242 --to bore.pub
+  502  wget https://github.com/ekzhang/bore/releases/download/v0.5.1/bore-v0.5.1-x86_64-unknown-linux-musl.tar.gz
+  503  tar -xf bore-v0.5.1-x86_64-unknown-linux-musl.tar.gz
+  504  sudo mv bore /usr/local/bin/
+  505  bore local 4242 --to bore.pub
+  506  cd TP_Secret/
+  507  # On enlève le -it
+  508  kubectl exec stripe-poc-78b87cc4-hrfn6 -n preprod -- printenv | grep STRIPE
+  509  kubectl describe pod stripe-poc-78b87cc4-hrfn6 -n preprod
+  510  kubectl get pods -n dev
+  511  kubectl create secret generic python-secret --from-literal=DB_PASS=admin123 -n dev
+  512  kubectl create configmap python-config --from-literal=APP_ENV=development -n dev
+  513  cd k8s/
+  514  ls
+  515  # Si tu n'as pas encore créé le fichier, fais-le vite :
+  516  cat <<EOF > k8s/python-deploy.yaml
+  517  apiVersion: apps/v1
+  518  kind: Deployment
+  519  metadata:
+  520    name: python-app
+  521    namespace: dev
+  522  spec:
+  523    replicas: 1
+  524    selector:
+  525      matchLabels:
+  526        app: python
+  527    template:
+  528      metadata:
+  529        labels:
+  530          app: python
+  531      spec:
+  532        containers:
+  533        - name: python
+  534          image: python-app:1.0
+  535          imagePullPolicy: Never
+  536          env:
+  537          - name: APP_ENV
+  538            valueFrom:
+  539              configMapKeyRef:
+  540                name: python-config
+  541                key: APP_ENV
+  542  EOF
+  543  # Applique le fichier
+  544  kubectl apply -f k8s/python-deploy.yaml
+  545  cat <<EOF > python-deploy.yaml
+  546  apiVersion: apps/v1
+  547  kind: Deployment
+  548  metadata:
+  549    name: python-app
+  550    namespace: dev
+  551  spec:
+  552    replicas: 1
+  553    selector:
+  554      matchLabels:
+  555        app: python
+  556    template:
+  557      metadata:
+  558        labels:
+  559          app: python
+  560      spec:
+  561        containers:
+  562        - name: python
+  563          image: python-app:1.0
+  564          imagePullPolicy: Never
+  565          env:
+  566          - name: APP_ENV
+  567            valueFrom:
+  568              configMapKeyRef:
+  569                name: python-config
+  570                key: APP_ENV
+  571  EOF
+  572  kubectl apply -f python-deploy.yaml
+  573  kubectl get pods -n dev
+  574  kubectl exec python-app-58678bbd-54kl2 -n dev -- printenv | grep APP_ENV
+  575  kubectl set env deployment/python-app DB_PASS_SECRET --from=secret/python-secret --secret-key=DB_PASS -n dev
+  576  kubectl set env deployment/python-app --from=secret/python-secret -n dev
+  577  kubectl set env deployment/stripe-poc --from=configmap/stripe-config -n preprod
+  578  # Doit afficher STRIPE_API_KEY ET SUCCESS_URL
+  579  kubectl exec deployment/stripe-poc -n preprod -- printenv | grep -E "STRIPE|SUCCESS"
+  580  # Doit afficher APP_ENV ET DB_PASS
+  581  kubectl exec deployment/python-app -n dev -- printenv | grep -E "APP_ENV|DB_PASS"
+  582  kubectl port-forward svc/stripe-service 4242:4242 -n preprod
+  583  helm repo add uptime-kuma https://dirsigler.github.io/uptime-kuma-helm
+  584  helm repo update
+  585  helm install uptime-kuma uptime-kuma/uptime-kuma
+  586  kubectl port-forward svc/uptime-kuma 3001:3001
+  587  kubectl get pods
+  588  kubectl port-forward svc/uptime-kuma 3001:3001
+  589  ls
+  590  minikube start --listen-address=0.0.0.0 --memory=max --cpus=max --kubernetes-version=v1.35.0
+  591  k delete all --all
+  592  df -h
+  593  ls
+  594  mkdir wordpress
+  595  cd wordpress/
+  596  kubectl create secret generic mysql-pass --from-literal=password=alicia
+  597  touch mysql-deployment.yaml
+  598  touch wordpress-deployment.yaml
+  599  kubectl apply -f mysql-deployment.yaml
+  600  kubectl apply -f wordpress-deployment.yaml
+  601  kubectl get pods
+  602  kubectl get services wordpress
+  603  minikube service wordpress
+  604  helm repo add netdata https://netdata.github.io/helmchart/
+  605  sudo snap install helm
+  606  curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+  607  sudo snap install helm --classic
+  608  helm version
+  609  helm repo add netdata https://netdata.github.io/helmchart/
+  610  helm repo update
+  611  helm install netdata netdata/netdata
+  612  kubectl port-forward svc/netdata 19999:19999
+  613  kubectl get pods
+  614  kubectl get pods -w
+  615  kubectl port-forward svc/netdata 19999:19999
+  616  ls
+  617  df -h
+  618  kubectl get pods -w
+  619  kubectl port-forward svc/netdata 19999:19999
+  620  sudo fuser -k 19999/tcp
+  621  kubectl port-forward svc/netdata 19999:19999
+  622  cd wordpress/
+  623  k6 run script.js
+  624  cd wordpress/
+  625  brew install k6
+  626  sudo apt install brew
+  627  k6 version
+  628  sudo snap install k6
+  629  k6 version
+  630  nano script.js
+  631  k6 run script.js
+  632  kubectl get pods -l app.kubernetes.io/instance=netdata
+  633  helm uninstall netdata
+  634  helm repo add netdata https://netdata.github.io/helmchart/
+  635  helm repo update
+  636  helm install netdata netdata/netdata
+  637  kubectl get pods
+  638  kubectl port-forward svc/netdata 19999:19999
+  639  killall kubectl
+  640  kubectl port-forward svc/netdata 19999:19999
+  641  cd wordpress/
+  642  kubectl port-forward svc/uptime-kuma 3001:3001
+  643  ls
+  644  minikube start --listen-address=0.0.0.0 --memory=max --cpus=max --kubernetes-version=v1.35.0
+  645  df -h
+  646  kubectl exec -it $(kubectl get pods -l app=wordpress,tier=frontend -o jsonpath="{.items[0].metadata.name}") -- cat /etc/shadow
+  647  kubectl logs -l app.kubernetes.io/name=falco -n falco | grep "Notice"
+  648  cd wordpress/
+  649  ls
+  650  cd ../
+  651  ls
+  652  cd wordpress/
+  653  # Relance l'accès au fichier interdit
+  654  kubectl exec -it $(kubectl get pods -l app=wordpress,tier=frontend -o jsonpath="{.items[0].metadata.name}") -- cat /etc/shadow
+  655  # Regarde immédiatement les alertes
+  656  kubectl logs -l app.kubernetes.io/name=falco -n falco | grep "Notice"
+  657  cd wordpress/
+  658  kubectl port-forward svc/netdata 19999:19999
+  659  kubectl port-forward svc/wordpress 8080:80
+  660  clear
+  661  minikube start --listen-address=0.0.0.0 --memory=max --cpus=max --kubernetes-version=v1.35.0
+  662  kubectl port-forward svc/uptime-kuma 3001:3001
+  663  cd wordpress/
+  664  kubectl get svc
+  665  sudo fuser -k 19999/tcp
+  666  kubectl port-forward svc/netdata 19999:19999 --address 0.0.0.0
+  667  kubectl logs -l app.kubernetes.io/name=netdata -c netdata
+  668  kubectl port-forward svc/netdata 19999:19999 --address 0.0.0.0
+  669  helm repo add wazuh https://devops.wazuh.com/helm
+  670  ping google.com
+  671  helm repo add wazuh https://wazuh.github.io/wazuh-charts
+  672  helm repo update
+  673  git clone https://github.com/wazuh/wazuh-kubernetes.git
+  674  cd wazuh-kubernetes/envs/minikube
+  675  ls -R wazuh-kubernetes | grep minikube
+  676  cd wazuh-kubernetes/
+  677  ls
+  678  cd envs/minikube
+  679  cd envs/
+  680  ls
+  681  cd local-env
+  682  ls
+  683  kubectl apply -k .
+  684  cd ~/wordpress/wazuh-kubernetes
+  685  bash wazuh/certs/certs-generator.sh
+  686  ls -R | grep certs
+  687  kubectl apply -f https://raw.githubusercontent.com/wazuh/wazuh-kubernetes/master/deployments/wazuh-all-in-one.yaml
+  688  kubectl apply -f https://raw.githubusercontent.com/wazuh/wazuh-kubernetes/v4.7.2/deployments/wazuh-all-in-one.yaml
+  689  helm repo remove wazuh 2>/dev/null
+  690  helm repo add wazuh https://wazuh.github.io/wazuh-charts
+  691  helm repo update
+  692  helm install wazuh wazuh/wazuh-stack --set indexer.replicas=1 --set server.replicas=1 --namespace wazuh --create-namespace
+  693  cd ~/wordpress/wazuh-kubernetes/wazuh/main-server
+  694  ls
+  695  cd wazuh/
+  696  ls
+  697  kubectl create namespace wazuh
+  698  cd ~/wordpress/wazuh-kubernetes/wazuh
+  699  kubectl apply -k base/ -n wazuh
+  700  cd ../
+  701  helm repo add falcosecurity https://falcosecurity.github.io/charts
+  702  helm repo update
+  703  helm install falco falcosecurity/falco --namespace falco --create-namespace
+  704  kubectl get pods -n falco
+  705  # Remplace par ton nom de pod wordpress
+  706  kubectl exec -it $(kubectl get pods -l app=wordpress,tier=frontend -o jsonpath="{.items[0].metadata.name}") -- cat /etc/shadow
+  707  kubectl logs -l app.kubernetes.io/name=falco -n falco | grep "Notice"
+  708  kubectl get pods -n falco
+  709  kubectl logs -l app.kubernetes.io/name=falco -n falco | grep "Notice"
+  710  ls
+  711  cd wordpress/
+  712  ls
+  713  minikube start --listen-address=0.0.0.0 --memory=max --cpus=max --kubernetes-version=v1.35.0
+  714  kubectl get pods
+  715  cd ..
+  716  ls
+  717  cd tp_ku/
+  718  kubectl run load-generator --rm -i --tty --image=httpd:alpine -- /bin/sh -c "ab -n 200000 -c 1000 http://python-svc.prod-python-app.svc.cluster.local/"
+  719  kubectl run load-generator --rm -i --tty --image=httpd:alpine -- /bin/sh -c "ab -n 100000 -c 50 http://python-svc.prod-python-app.svc.cluster.local/"
+  720  kubectl run load-generator --rm -i --tty --image=busybox -- /bin/sh -c "while true; do wget -q -O- http://python-svc.prod-python-app.svc.cluster.local/; done"
+  721  kubectl run load-generator --rm -i --tty --image=httpd:alpine -- /bin/sh -c "ab -n 200000 -c 1000 http://python-svc.prod-python-app.svc.cluster.local/"
+  722  kubectl run load-generator-caddy --rm -i --tty --image=httpd:alpine -- /bin/sh -c "ab -n 200000 -c 100 http://caddy-svc.prod-caddy.svc.cluster.local/"
+  723  cd tp_ky
+  724  cd tp_ku
+  725  kubectl port-forward svc/netdata 19999:19999 -n netdata
+  726  s
+  727  ls
+  728  kubectl get all,ingress,pvc,configmap,secret
+  729  kubectl get namespaces
+  730  minikube delete
+  731  minikube start --listen-address=0.0.0.0 --memory=max --cpus=max --kubernetes-version=v1.35.0
+  732  kubectl get all
+  733  kubectl top nodes
+  734  kubectl top pods
+  735  k get pod -o wide
+  736  minikube addons enable metrics-server
+  737  kubectl top nodes
+  738  k get all
+  739  cd projet-k8s-al/
+  740  kubectl get hpa -n preprod-al-25-03-2026
+  741  k get pod
+  742  k get all
+  743  kubectl get hpa -n preprod-al-25-03-2026
+  744  k get all
+  745  kubectl get all -n preprod-al-25-03-2026
+  746  kubectl get all -A | grep al-25-03-2026
+  747  git status
+  748  git add .
+  749  git commit -m "partie 1 fini"
+  750  git push
+  751  kubectl annotate deployment ecommerce-dep-al-25-03-2026 kubernetes.io/change-cause="Première version stable v1" -n preprod-al-25-03-2026
+  752  kubectl set image deployment/ecommerce-dep-al-25-03-2026 ecommerce-container=mxkimv/ecommerce-al-25-03-2026:v1 -n preprod-al-25-03-2026
+  753  kubectl annotate deployment ecommerce-dep-al-25-03-2026 kubernetes.io/change-cause="Mise à jour vers v2 (optimisation requirements)" -n preprod-al-25-03-2026
+  754  kubectl rollout history deployment ecommerce-dep-al-25-03-2026 -n preprod-al-25-03-2026
+  755  git add manifests/
+  756  git commit -m "mise en place de l'autoscaling et test des rollouts/rollbacks"
+  757  kubectl events -n preprod-al-25-03-2026 > logs/history-kubernetes-events-al-25-03-2026.log
+  758  mkdir logs
+  759  ls
+  760  kubectl events -n preprod-al-25-03-2026 > logs/history-kubernetes-events-al-25-03-2026.log
+  761  history > logs/history-projet-ALICIA-LILO.log
