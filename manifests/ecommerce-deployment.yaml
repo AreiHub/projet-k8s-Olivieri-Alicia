@@ -16,6 +16,13 @@ spec:
       containers:
       - name: ecommerce-container
         image: mxkimv/ecommerce-al-25-03-2026:v1
+        resources: 
+          requests:
+            cpu: "100m" 
+            memory: "128Mi"
+          limits:
+            cpu: "500m" 
+            memory: "256Mi"
         ports:
         - containerPort: 5005
         envFrom:

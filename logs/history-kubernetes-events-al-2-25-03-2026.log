@@ -1,0 +1,22 @@
+LAST SEEN             TYPE      REASON                         OBJECT                                                MESSAGE
+25m                   Normal    SuccessfulCreate               ReplicaSet/ecommerce-dep-al-25-03-2026-64bbff9d6c     Created pod: ecommerce-dep-al-25-03-2026-64bbff9d6c-v66vq
+25m                   Normal    ScalingReplicaSet              Deployment/ecommerce-dep-al-25-03-2026                Scaled up replica set ecommerce-dep-al-25-03-2026-64bbff9d6c from 0 to 3
+25m                   Normal    SuccessfulCreate               ReplicaSet/ecommerce-dep-al-25-03-2026-64bbff9d6c     Created pod: ecommerce-dep-al-25-03-2026-64bbff9d6c-8rzbf
+25m                   Normal    SuccessfulCreate               ReplicaSet/ecommerce-dep-al-25-03-2026-64bbff9d6c     Created pod: ecommerce-dep-al-25-03-2026-64bbff9d6c-vzpb4
+25m                   Normal    Pulled                         Pod/ecommerce-dep-al-25-03-2026-64bbff9d6c-v66vq      Container image "mxkimv/ecommerce-al-25-03-2026:v1" already present on machine and can be accessed by the pod
+25m                   Normal    Scheduled                      Pod/ecommerce-dep-al-25-03-2026-64bbff9d6c-8rzbf      Successfully assigned preprod-al-25-03-2026/ecommerce-dep-al-25-03-2026-64bbff9d6c-8rzbf to minikube
+25m                   Normal    Created                        Pod/ecommerce-dep-al-25-03-2026-64bbff9d6c-v66vq      Container created
+25m                   Normal    Pulled                         Pod/ecommerce-dep-al-25-03-2026-64bbff9d6c-8rzbf      Container image "mxkimv/ecommerce-al-25-03-2026:v1" already present on machine and can be accessed by the pod
+25m                   Normal    Scheduled                      Pod/ecommerce-dep-al-25-03-2026-64bbff9d6c-vzpb4      Successfully assigned preprod-al-25-03-2026/ecommerce-dep-al-25-03-2026-64bbff9d6c-vzpb4 to minikube
+25m                   Normal    Pulled                         Pod/ecommerce-dep-al-25-03-2026-64bbff9d6c-vzpb4      Container image "mxkimv/ecommerce-al-25-03-2026:v1" already present on machine and can be accessed by the pod
+25m                   Normal    Created                        Pod/ecommerce-dep-al-25-03-2026-64bbff9d6c-vzpb4      Container created
+25m                   Normal    Created                        Pod/ecommerce-dep-al-25-03-2026-64bbff9d6c-8rzbf      Container created
+25m                   Normal    Scheduled                      Pod/ecommerce-dep-al-25-03-2026-64bbff9d6c-v66vq      Successfully assigned preprod-al-25-03-2026/ecommerce-dep-al-25-03-2026-64bbff9d6c-v66vq to minikube
+25m                   Normal    Started                        Pod/ecommerce-dep-al-25-03-2026-64bbff9d6c-8rzbf      Container started
+25m                   Normal    Started                        Pod/ecommerce-dep-al-25-03-2026-64bbff9d6c-vzpb4      Container started
+25m                   Normal    Started                        Pod/ecommerce-dep-al-25-03-2026-64bbff9d6c-v66vq      Container started
+13m (x3 over 14m)     Warning   FailedComputeMetricsReplicas   HorizontalPodAutoscaler/ecommerce-dep-al-25-03-2026   invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu in container ecommerce-container of Pod ecommerce-dep-al-25-03-2026-64bbff9d6c-8rzbf
+12m (x9 over 15m)     Warning   FailedComputeMetricsReplicas   HorizontalPodAutoscaler/ecommerce-dep-al-25-03-2026   invalid metrics (1 invalid out of 1), first error is: failed to get cpu resource metric value: failed to get cpu utilization: missing request for cpu in container ecommerce-container of Pod ecommerce-dep-al-25-03-2026-64bbff9d6c-v66vq
+10m (x16 over 15m)    Warning   FailedGetResourceMetric        HorizontalPodAutoscaler/ecommerce-dep-al-25-03-2026   failed to get cpu utilization: missing request for cpu in container ecommerce-container of Pod ecommerce-dep-al-25-03-2026-64bbff9d6c-v66vq
+5m19s (x4 over 11m)   Warning   FailedGetResourceMetric        HorizontalPodAutoscaler/ecommerce-dep-al-25-03-2026   failed to get cpu utilization: missing request for cpu in container ecommerce-container of Pod ecommerce-dep-al-25-03-2026-64bbff9d6c-vzpb4
+19s (x13 over 14m)    Warning   FailedGetResourceMetric        HorizontalPodAutoscaler/ecommerce-dep-al-25-03-2026   failed to get cpu utilization: missing request for cpu in container ecommerce-container of Pod ecommerce-dep-al-25-03-2026-64bbff9d6c-8rzbf
