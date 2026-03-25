@@ -194,5 +194,3 @@ Afin d'auditer et de prouver le bon fonctionnement de l'infrastructure déployé
 ```history-projet-ALICIA-LILO.log``` : Trace complète de l'historique des commandes Linux utilisées lors de l'initialisation et de la configuration du projet.
 
 ```history-kubernetes-events-al-25-03-2026.log``` : Journal des événements du cluster, servant de preuve pour les succès de déploiements, l'affectation des ressources, et le déclenchement du scaling (HPA).
-
-```history-projet-ALICIA-LILO-docker-ecommerce.log``` : Logs applicatifs internes des conteneurs, confirmant la bonne communication avec l'API externe de Stripe.
